@@ -7,19 +7,27 @@ For CSS stuff, make good use of the Chrome Developer Tools:
 
 
 /*
-TODO 4
+TODO 4 DONE
 add a selector for elements with class "item-watchlist"
 give these elements a display property of inline-block
 and then style them as shown in the example (padding, margin, background, etc)
 */
-
+.item-watchlist{
+	display: inline-block;
+	background-color: orange;
+	padding: 50px;
+	color: white;
+}
 
 /*
-TODO 5 
+TODO 5 DONE
 Make all elements have color: gray; by default
 Hint: just apply the style using a parent selector, and then all 
 descendent elements will automatically inherit the same styles
 */
+body{
+	color: gray;
+}
 
 
 #big-header {
@@ -52,9 +60,13 @@ ul {
 button, input[type="submit"] {
 	border-width: 0px;
 	/*
-	TODO 7
-	give these buttons some padding, and color them orange with white text
-	*/
+	TODO 7 DONE
+	give these buttons some padding, and color them orange with white text*/
+	padding: 10px;
+	background-color: orange;
+	color: white;
+	
+	
 }
 
 button:disabled {
