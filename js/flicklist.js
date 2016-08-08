@@ -8,7 +8,7 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "TODO", // TODO 0 add your api key
+  token: "f0486d4c7f2b3a31908d5a7cbaeeee63", // DONE 0 add your api key
   /**
    * Given a movie object, returns the url to its poster image
    */
@@ -26,11 +26,11 @@ var api = {
  * the callback function that was passed in
  */
 
-// TODO 1
+// TODO 1 DONE
 // this function should accept a second argument, `keywords`
-function discoverMovies(callback) {
+function discoverMovies(callback, keywords) {
 
-  // TODO 2 
+  // TODO 2 DONE
   // ask the API for movies related to the keywords that were passed in above
   // HINT: add another key/value pair to the `data` argument below
 
@@ -38,8 +38,10 @@ function discoverMovies(callback) {
     url: api.root + "/discover/movie",
     data: {
       api_key: api.token,
+      with_keywords: keywords
     },
     success: function(response) {
+    	console.log(response);
       model.browseItems = response.results;
       callback(response);
     }
@@ -55,11 +57,12 @@ function discoverMovies(callback) {
  * the API's response.
  */
 function searchMovies(query, callback) {
-  // TODO 3
+  // TODO 3 DONE
   // change the url so that we search for keywords, not movies
+  
 
 
-  // TODO 4
+  // TODO 4 DONE
   // when the response comes back, do all the tasks below:
 
 
@@ -88,16 +91,24 @@ function searchMovies(query, callback) {
   // passing along 2 arguments:
   // 1) the callback 
   // 2) the string of keywords
-
+  
+  var keywordIDs = [];
+  var keywordsString = "";
 
   $.ajax({
-    url: api.root + "/search/movie",
+    url: api.root + "/search/keyword",
     data: {
       api_key: api.token,
       query: query
     },
     success: function(response) {
       console.log(response);
+      	keywordIDs = response.results.map(function(stuff){
+      		return stuff.id;	
+      	});
+      	keywordsString = keywordIDs.join("|");
+      	console.log(keywordsString);
+      	discoverMovies(render, keywordsString);
     }
   });
 }
