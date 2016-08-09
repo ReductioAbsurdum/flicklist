@@ -45,3 +45,23 @@ section header {
 section {
 	padding: 2%;
 }
+
+#browse-carousel {
+    max-width: 300px;
+    margin: auto;
+}
+
+.carousel-inner {
+  padding-left: 0px;
+}
+
+#container-A{
+	color: white;	
+}
+
+.well{
+	border: red;
+	background-color: red;
+	border-radius: 5px;
+	padding: 15px;
+}
